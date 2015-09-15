@@ -1,0 +1,40 @@
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JTextArea;
+
+public class RegEx {
+	
+	String foundExpression = " ";
+	
+	public void findMatcher(Pattern pattern, Matcher matcher){
+	
+		boolean found = false;
+		
+		while (matcher.find()) {
+		        foundExpression = foundExpression + "I found the text-->" +
+		            " " + matcher.group() + "<-- starting at " +
+		            "index " + matcher.start() + " and ending at index " + matcher.end() + "\n";
+		        found = true;
+	    }
+	    if(!found){
+	        System.out.println("No match found.");
+	    }
+	}
+
+	public void testRegEx(String s) {
+		
+		//Enter your Regular Expression
+	    Pattern pattern = Pattern.compile("Admiral\\s[a-zA-Z]+");
+	    
+	    //String to search
+	    Matcher matcher = pattern.matcher(s);
+	   
+	   findMatcher(pattern, matcher);
+	}
+	
+	public String toString(){
+		
+		return foundExpression;
+	}
+}
